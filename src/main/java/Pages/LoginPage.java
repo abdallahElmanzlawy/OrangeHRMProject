@@ -15,6 +15,7 @@ public class LoginPage {
     By userNameField = By.cssSelector("input[name='username']");
     By passwordField = By.cssSelector("input[name='password']");
     By loginButton = By.cssSelector("button[type='submit']");
+    By verifyResult = By.xpath("//*[@id='app']/div[1]/div[1]/header/div[1]/div[1]/span/h6");
 
     public LoginPage(WebDriver driver)
     {
@@ -40,6 +41,12 @@ public class LoginPage {
     {
         wait.until(ExpectedConditions.visibilityOfElementLocated(loginButton));
         driver.findElement(loginButton).click();
+    }
+
+    public String getResult()
+    {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(verifyResult));
+        return driver.findElement(verifyResult).getText();
     }
 
 }
